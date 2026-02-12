@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: skin-api
+    ports:
+      - "8000:5000"
+
+  frontend:
+    image: skin-frontend
+    container_name: skin-ui
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
